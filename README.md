@@ -40,7 +40,7 @@ Never commit `.env`. It is already in `.gitignore`.
 | 7 | `week07_safety` | Injection guard, PII redaction, red teaming, cost | `pytest week07_safety` |
 | 8 | `week08_demo` | Documentation, demo video, interview prep | `pytest week08_demo` |
 
-Each folder's `README.md` is that week's brief: goal, steps, stretch goals and what the mentor reviews.
+Each folder's `README.md` is that week's brief: goal, steps, stretch goals and what the mentor reviews. At the bottom, every task has a **Show solution** button you can click when you're stuck. Try first, and be ready to explain your code in the review.
 
 ## How each week works
 1. `git checkout -b week-03-search` (the branch name **must** start with `week-NN`).

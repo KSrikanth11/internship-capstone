@@ -19,3 +19,44 @@ A working live URL, input validation, and no keys in the frontend.
 
 ## Submit
 Branch `week-06-...`, open a pull request into `main`, fill in the template, and paste its link in the weekly submission form.
+
+## Solutions
+
+Try first: you learn most from getting stuck for a while. Each block opens when you click it.
+
+<details>
+<summary>Show solution: <code>health()</code></summary>
+
+```python
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+```
+
+</details>
+
+<details>
+<summary>Show solution: <code>chat_endpoint()</code></summary>
+
+```python
+@app.post("/chat")
+def chat_endpoint(req: ChatRequest):
+    if not req.message.strip():
+        raise HTTPException(422, "empty message")
+    history = [m for m in req.history if m.get("role") in ("user", "assistant")][-10:]
+    return {"reply": chat(history + [{"role": "user", "content": req.message}])}
+```
+
+</details>
+
+<details>
+<summary>Show solution: <code>chat_stream()</code></summary>
+
+```python
+@app.post("/chat/stream")
+def chat_stream(req: ChatRequest):
+    reply = chat([{"role": "user", "content": req.message}])
+    return StreamingResponse((w + " " for w in reply.split()), media_type="text/plain")
+```
+
+</details>

@@ -20,3 +20,29 @@ Clean commits with clear messages, input validation, no secrets committed.
 
 ## Submit
 Branch `week-01-...`, open a pull request into `main`, fill in the template, and paste its link in the weekly submission form.
+
+## Solutions
+
+Try first: you learn most from getting stuck for a while. Each block opens when you click it.
+
+<details>
+<summary>Show solution: <code>build_messages()</code></summary>
+
+```python
+def build_messages(question: str, system: str = SYSTEM_PROMPT) -> list[dict]:
+    if not question or not question.strip():
+        raise ValueError("empty question")
+    return [{"role": "system", "content": system}, {"role": "user", "content": question.strip()}]
+```
+
+</details>
+
+<details>
+<summary>Show solution: <code>ask()</code></summary>
+
+```python
+def ask(question: str) -> str:
+    return chat(build_messages(question)).strip()
+```
+
+</details>
